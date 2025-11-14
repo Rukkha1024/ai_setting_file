@@ -1,0 +1,13 @@
+projects = { "/home/alice" = { trust_level = "trusted" } , "/mnt/c/Users/Alice/OneDrive - 청주대학교/shared_files" = { trust_level = "trusted" } }
+approval_policy = "never"
+sandbox_mode    = "danger-full-access"
+model_reasoning_effort = "medium"
+model = "gpt-5"
+[sandbox_workspace_write]
+network_access = true
+
+[mcp_servers.context7-local]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp@latest"]  # 기본 사용법
+
+tui.use_alternate_screen = false
