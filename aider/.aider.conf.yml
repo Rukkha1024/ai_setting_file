@@ -1,0 +1,69 @@
+# Aider Configuration File
+# Place this file in your project root as .aider.conf.yml
+
+# Model settings
+model: gpt-4
+# Alternative models:
+# model: gpt-3.5-turbo
+# model: claude-3-opus-20240229
+# model: claude-3-sonnet-20240229
+
+# Git integration
+auto-commits: true
+auto-test: false
+dirty-commits: true
+
+# Edit settings
+edit-format: diff  # Options: diff, whole, udiff
+show-diffs: true
+
+# Streaming
+stream: true
+
+# Testing
+test-cmd: ""  # e.g., "pytest", "npm test"
+lint-cmd: ""  # e.g., "pylint", "npm run lint"
+
+# File operations
+restore-chat-history: true
+chat-history-file: .aider.chat.history.md
+
+# Dark/Light mode
+dark-mode: auto
+
+# Voice settings (optional)
+voice-language: en
+
+# Pretty printing
+pretty: true
+
+# Apply file edits automatically
+yes: false
+
+# Read-only mode
+read: false
+
+# Additional options
+# map-tokens: 1024
+# cache-prompts: true
+# no-fancy-input: false
+
+# Example: Python project configuration
+# model: gpt-4
+# auto-commits: true
+# test-cmd: "pytest -v"
+# lint-cmd: "black . && isort . && mypy ."
+# edit-format: diff
+
+# Example: JavaScript/TypeScript project
+# model: claude-3-opus-20240229
+# auto-commits: true
+# test-cmd: "npm test"
+# lint-cmd: "npm run lint"
+# edit-format: diff
+
+# Example: Minimal configuration for cost savings
+# model: gpt-3.5-turbo
+# auto-commits: false
+# edit-format: whole
+# stream: false

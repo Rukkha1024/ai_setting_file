@@ -1,0 +1,262 @@
+# Cursor AI Rules
+
+You are an expert software developer helping with this project.
+
+## Project Context
+
+### Project Type
+[Describe your project type: web app, API, library, CLI tool, etc.]
+
+### Technology Stack
+- **Language**: [e.g., Python 3.11, TypeScript 5.0]
+- **Framework**: [e.g., FastAPI, React, Express]
+- **Database**: [e.g., PostgreSQL, MongoDB]
+- **Key Libraries**: [List important dependencies]
+
+### Architecture
+[Describe your architecture: MVC, microservices, monolithic, etc.]
+
+## Code Style Guidelines
+
+### Naming Conventions
+- Variables: [e.g., camelCase, snake_case]
+- Functions: [e.g., camelCase, snake_case]
+- Classes: [e.g., PascalCase]
+- Constants: [e.g., UPPER_SNAKE_CASE]
+- Files: [e.g., kebab-case.ts, snake_case.py]
+
+### Code Organization
+```
+project/
+├── src/           # Source code
+├── tests/         # Test files
+├── docs/          # Documentation
+└── config/        # Configuration files
+```
+
+### Best Practices
+1. Write clean, readable, self-documenting code
+2. Follow DRY (Don't Repeat Yourself) principle
+3. Use meaningful variable and function names
+4. Keep functions small and focused (< 50 lines)
+5. Prefer composition over inheritance
+6. Handle errors appropriately
+7. Write comprehensive tests
+
+## Coding Rules
+
+### General Rules
+- Always use type annotations (Python, TypeScript)
+- Write docstrings/JSDoc for all public functions and classes
+- Add comments only when necessary to explain complex logic
+- Use consistent formatting (use project's formatter)
+- Never commit secrets or sensitive data
+- Keep dependencies up-to-date and minimal
+
+### Language-Specific Rules
+
+#### Python
+```python
+# Good example
+def calculate_total_price(items: list[dict], tax_rate: float) -> float:
+    """
+    Calculate total price including tax.
+    
+    Args:
+        items: List of items with 'price' key
+        tax_rate: Tax rate as decimal (e.g., 0.1 for 10%)
+    
+    Returns:
+        Total price with tax applied
+    """
+    subtotal = sum(item['price'] for item in items)
+    return subtotal * (1 + tax_rate)
+```
+
+#### TypeScript
+```typescript
+// Good example
+interface Item {
+  id: string;
+  price: number;
+}
+
+function calculateTotalPrice(items: Item[], taxRate: number): number {
+  const subtotal = items.reduce((sum, item) => sum + item.price, 0);
+  return subtotal * (1 + taxRate);
+}
+```
+
+## Testing Requirements
+
+### Test Coverage
+- Minimum coverage: 80%
+- All new features must include tests
+- Test both happy paths and edge cases
+
+### Test Structure
+```python
+# Python example with pytest
+def test_calculate_total_price_with_valid_items():
+    """Test calculation with valid items."""
+    items = [{'price': 10}, {'price': 20}]
+    result = calculate_total_price(items, 0.1)
+    assert result == 33.0
+
+def test_calculate_total_price_with_empty_list():
+    """Test calculation with no items."""
+    result = calculate_total_price([], 0.1)
+    assert result == 0.0
+```
+
+## Documentation
+
+### Code Documentation
+- Use [Google/NumPy/JSDoc] style for docstrings
+- Document all public APIs
+- Include usage examples
+- Explain parameters, return values, and exceptions
+
+### Project Documentation
+- Keep README.md up-to-date
+- Document setup and installation steps
+- Provide usage examples
+- Explain architecture and design decisions
+
+## Security Guidelines
+
+1. **Never** hardcode sensitive information
+2. **Always** validate user inputs
+3. **Use** parameterized queries for database operations
+4. **Implement** proper authentication and authorization
+5. **Keep** dependencies updated
+6. **Follow** OWASP security best practices
+
+## Error Handling
+
+### Python
+```python
+class CustomException(Exception):
+    """Custom exception for specific errors."""
+    pass
+
+def process_data(data: dict) -> dict:
+    """Process data with proper error handling."""
+    try:
+        if not data:
+            raise ValueError("Data cannot be empty")
+        # Process data
+        return result
+    except KeyError as e:
+        logger.error(f"Missing required key: {e}")
+        raise CustomException(f"Invalid data structure: {e}")
+    except Exception as e:
+        logger.exception("Unexpected error processing data")
+        raise
+```
+
+### TypeScript
+```typescript
+class CustomError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'CustomError';
+  }
+}
+
+function processData(data: Record<string, any>): Result {
+  if (!data) {
+    throw new CustomError('Data cannot be empty');
+  }
+  
+  try {
+    // Process data
+    return result;
+  } catch (error) {
+    console.error('Error processing data:', error);
+    throw new CustomError(`Failed to process data: ${error.message}`);
+  }
+}
+```
+
+## Git Practices
+
+### Commit Messages
+Follow conventional commits format:
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer]
+```
+
+Types: feat, fix, docs, style, refactor, test, chore
+
+Examples:
+- `feat(auth): add OAuth2 authentication`
+- `fix(api): handle null response from external service`
+- `docs(readme): update installation instructions`
+
+### Branch Naming
+```
+<type>/<short-description>
+```
+
+Examples:
+- `feature/user-authentication`
+- `fix/memory-leak-in-cache`
+- `refactor/simplify-error-handling`
+
+## AI Instructions
+
+When helping with this project:
+
+1. **Follow** all the rules and guidelines above
+2. **Use** existing patterns and conventions in the codebase
+3. **Suggest** improvements when you see code that could be better
+4. **Explain** your reasoning when making significant changes
+5. **Ask** for clarification when requirements are unclear
+6. **Consider** performance, security, and maintainability
+7. **Write** tests for new functionality
+8. **Update** documentation when changing APIs
+9. **Avoid** introducing new dependencies without discussion
+10. **Prefer** simple, readable solutions over clever ones
+
+### When Writing Code
+- Always check existing code for similar patterns
+- Reuse utility functions when available
+- Follow the project's folder structure
+- Use the project's logging framework
+- Implement proper error handling
+- Add appropriate type hints/annotations
+- Write meaningful comments for complex logic
+
+### When Refactoring
+- Make small, incremental changes
+- Maintain backward compatibility when possible
+- Update tests to reflect changes
+- Update documentation
+- Explain the benefits of the refactoring
+
+### When Debugging
+- Read error messages carefully
+- Check logs for additional context
+- Test edge cases and error conditions
+- Verify assumptions with unit tests
+- Consider performance implications
+
+## Project-Specific Notes
+
+[Add any project-specific context, gotchas, or important information here]
+
+### Common Tasks
+- [How to add a new feature]
+- [How to run tests]
+- [How to deploy]
+- [How to debug common issues]
+
+### Important Links
+- [Link to API documentation]
+- [Link to design docs]
+- [Link to deployment guide]
