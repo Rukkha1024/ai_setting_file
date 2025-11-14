@@ -16,3 +16,9 @@ Always follow this procedure when performing tasks:
   2) otherwise `conda run -n cuda pip install <pkg>`
 - Before running Python, verify the interpreter path with:
   `conda run -n cuda python -c "import sys; print(sys.executable)"`
+
+--
+## Code Rules 
+- Always design code for high reusability and central control via `config.yaml`.
+- Whenever you see the same logic or configuration emerge in two or more places, refactor it into a `config.yaml` entry for the parameters.
+- Before introducing a new constant or parameter in code, first ask: “Should this live in `config.yaml` so it can be centrally managed?” If yes, add it to `config.yaml` and reference it from there.
